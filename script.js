@@ -11,6 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initWaveCanvas();
     initGridAnimation();
     initOrbitalAnimation();
+    initInstagramPreviews();
 });
 
 // ===== CURSOR GLOW =====
@@ -580,3 +581,9 @@ function activateEasterEgg() {
     document.head.appendChild(fallAnimation);
 }
 
+// ===== INSTAGRAM PREVIEWS =====
+function initInstagramPreviews() {
+    // Instagram embeds are loaded via iframe in HTML
+    // No additional JavaScript setup needed
+    // The iframes will automatically load Instagram content
+}

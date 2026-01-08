@@ -2075,3 +2075,300 @@ body:hover .cursor-glow {
         grid-template-columns: 1fr;
     }
 }
+
+/* ===== CASES SECTION ===== */
+.cases {
+    background: transparent;
+    padding: 6rem 3rem;
+}
+
+.cases-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.case-card {
+    background: linear-gradient(135deg, rgba(139, 92, 246, 0.05), rgba(0, 245, 255, 0.05));
+    border: 1px solid rgba(139, 92, 246, 0.1);
+    border-radius: 24px;
+    overflow: hidden;
+    text-decoration: none;
+    color: inherit;
+    transition: all 0.4s var(--ease-out-expo);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.case-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: var(--gradient-primary);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.4s var(--ease-out-expo);
+    z-index: 2;
+}
+
+.case-card:hover {
+    transform: translateY(-10px);
+    border-color: rgba(139, 92, 246, 0.3);
+    box-shadow: 0 20px 60px rgba(139, 92, 246, 0.2);
+}
+
+.case-card:hover::before {
+    transform: scaleX(1);
+}
+
+.case-image {
+    position: relative;
+    aspect-ratio: 1;
+    overflow: hidden;
+    background: #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    min-height: 540px;
+}
+
+.instagram-embed {
+    width: 100%;
+    height: 100%;
+    min-height: 540px;
+    border: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    pointer-events: auto;
+}
+
+.case-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    transition: transform 0.4s ease;
+    display: block;
+}
+
+.case-card:hover .case-image img {
+    transform: scale(1.03);
+}
+
+.case-gradient {
+    display: none;
+}
+
+.case-badge {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(10px);
+    padding: 0.5rem 1rem;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--cyan);
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    z-index: 4;
+    border: 1px solid rgba(0, 245, 255, 0.4);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.case-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(180deg, 
+        rgba(0, 0, 0, 0.3) 0%,
+        rgba(0, 0, 0, 0.5) 50%,
+        rgba(0, 0, 0, 0.7) 100%);
+    backdrop-filter: blur(4px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1.25rem;
+    opacity: 0;
+    transition: all 0.4s var(--ease-out-expo);
+    z-index: 2;
+    padding: 2rem;
+    pointer-events: none;
+}
+
+.case-card:hover .case-overlay {
+    opacity: 1;
+}
+
+.case-icon {
+    width: 70px;
+    height: 70px;
+    background: var(--gradient-primary);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 
+        0 0 40px rgba(139, 92, 246, 0.6),
+        0 0 80px rgba(0, 245, 255, 0.3);
+    animation: iconPulse 2s ease-in-out infinite;
+    transition: transform 0.3s ease;
+}
+
+.case-card:hover .case-icon {
+    transform: scale(1.1);
+}
+
+.case-icon svg {
+    width: 32px;
+    height: 32px;
+    color: var(--bg-dark);
+}
+
+@keyframes iconPulse {
+    0%, 100% { 
+        transform: scale(1);
+        box-shadow: 0 0 40px rgba(139, 92, 246, 0.6), 0 0 80px rgba(0, 245, 255, 0.3);
+    }
+    50% { 
+        transform: scale(1.05);
+        box-shadow: 0 0 60px rgba(139, 92, 246, 0.8), 0 0 100px rgba(0, 245, 255, 0.5);
+    }
+}
+
+.case-overlay span {
+    color: var(--text-primary);
+    font-weight: 600;
+    font-size: 1rem;
+    text-align: center;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+.case-content {
+    padding: 1.25rem 1.25rem;
+    position: relative;
+    background: linear-gradient(180deg, transparent, rgba(139, 92, 246, 0.02));
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    min-height: auto;
+}
+
+.case-content h3 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 0.4rem;
+    color: var(--text-primary);
+    line-height: 1.2;
+    transition: color 0.3s ease;
+}
+
+.case-card:hover .case-content h3 {
+    color: var(--cyan);
+}
+
+.case-content p {
+    color: var(--text-secondary);
+    font-size: 0.85rem;
+    line-height: 1.4;
+    transition: color 0.3s ease;
+    margin: 0;
+}
+
+.case-card:hover .case-content p {
+    color: var(--text-primary);
+}
+
+.case-center-icon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90px;
+    height: 90px;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(15px);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    z-index: 2;
+    pointer-events: none;
+    transition: all 0.4s var(--ease-out-expo);
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 0 40px rgba(0, 0, 0, 0.5);
+}
+
+.case-center-icon svg {
+    width: 50px;
+    height: 50px;
+    filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.3));
+}
+
+.case-card:hover .case-center-icon {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.8);
+}
+
+.case-pattern {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
+    pointer-events: none;
+    transition: opacity 0.4s ease;
+}
+
+/* Iframe styles removed - using images only for cleaner display */
+
+@media (max-width: 1024px) {
+    .cases-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .case-image {
+        min-height: 400px;
+    }
+    
+    .instagram-embed {
+        min-height: 400px;
+    }
+}
+
+@media (max-width: 768px) {
+    .cases-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    
+    .case-image {
+        min-height: 350px;
+        aspect-ratio: 1;
+    }
+    
+    .instagram-embed {
+        min-height: 350px;
+    }
+}
